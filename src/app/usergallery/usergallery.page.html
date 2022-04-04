@@ -1,0 +1,195 @@
+<!-- Author: Goma Niroula -->
+<ion-app>
+  <ion-split-pane when="sm" contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title align-title="center">Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-list-header>
+            <b>Navigation</b>
+          </ion-list-header>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item button href="/userhome">
+              <ion-icon slot="start" name="Home"></ion-icon>
+              <ion-label> Home </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- <ion-menu-toggle [autoHide]="false">
+            <ion-item button href="userprofile">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label> Profile </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item button href="/usersearch">
+              <ion-icon slot="start" name="Search"></ion-icon>
+              <ion-label> Search Video/Course </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- <ion-menu-toggle [autoHide]="false">
+            <ion-item button href="/userbookmarks">
+              <ion-icon slot="start" name='Bookmarks'></ion-icon>
+              <ion-label>
+                Bookmarks
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+          <!-- <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/instructor-upload-video">
+              <ion-icon slot="start" name='cloud-upload-outline'></ion-icon>
+              <ion-label>
+                Upload Video
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/purchasedcourses">
+              <ion-icon slot="start" name="pricetags"></ion-icon>
+              <ion-label> Purchased Courses </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/usergallery">
+              <ion-icon slot="start" name="image"></ion-icon>
+              <ion-label> Gallery </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/folders">
+              <ion-icon slot="start" name="folder-open-outline"></ion-icon>
+              <ion-label>
+                Folders
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/usermessages">
+              <ion-icon slot="start" name="mail-open"></ion-icon>
+              <ion-label> Messages </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/usernotification">
+              <ion-icon slot="start" name='notifications'></ion-icon>
+              <ion-label>
+                Notification
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+          <!-- <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/shareapp">
+              <ion-icon slot="start" name="share"></ion-icon>
+              <ion-label> Share </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item>
+              <ion-button href="home"> Sign out </ion-button>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/usersettings">
+              <ion-icon slot="start" name='settings'></ion-icon>
+              <ion-label>
+                Settings
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <!-- <ion-back-button defaultHref="home"></ion-back-button> -->
+            <ion-menu-toggle>
+              <ion-button>
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+              </ion-button>
+            </ion-menu-toggle>
+          </ion-buttons>
+          <div class="ion-text-center">
+            <ion-title slot="start" size="Medium"> Upload Pictures </ion-title>
+          </div>
+          <ion-buttons slot="primary">
+            <ion-button (click)="onUploadPicture()" [disabled]="!form.valid || !form.get('image').value">
+              <ion-icon name="checkmark" slot="icon-only"> </ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+        <ion-grid>
+          <ion-row>
+            <ion-col size-md="12" offset-md="3">
+                  <div class="ion-margin-vertical ion-text-center">
+                    <ion-card-title><h1>Take Picture/Upload From File</h1></ion-card-title>
+                  </div>
+
+                  <!-- <form [formGroup]="form">
+                    <ion-grid>
+                      <ion-row color="primary" justify-content-center>
+                        <ion-col align-self-center size-sm="6" offset-sm="3">
+                          <ion-item>
+                            <ion-label position="floating">Photo Name</ion-label>
+                            <ion-input type="text" autocorrect autocomplete formControlName="photoName"></ion-input>
+                          </ion-item>
+                        </ion-col>
+                      </ion-row>
+
+                      <ion-row color="primary" justify-content-center>
+                        <ion-col align-self-center size-sm="6" offset-sm="3">
+                          <div padding>
+                            <ion-item>
+                              <ion-label position="floating">
+                                Photo Description
+                              </ion-label>
+                              <ion-textarea rows="3" autocorrect autocomplete formControlName="photoDescription">
+                              </ion-textarea>
+                            </ion-item>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </form> -->
+
+                  <ion-row color="primary" justify-content-center>
+                    <ion-col align-self-center size-sm="6" offset-sm="3">
+                      <div>
+                        <!-- <app-image-picker
+                          [showPreview]="form.get('image').value"
+                          (imagePick)="onImagePicked($event)"
+                        ></app-image-picker> -->
+                      </div>
+                    </ion-col>
+                  </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+
+    </div>
+
+  </ion-split-pane>
+</ion-app>

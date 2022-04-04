@@ -1,0 +1,102 @@
+<ion-app>
+  <ion-split-pane when="sm" contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title align-title="center">Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-list-header>
+            <b>Navigation</b>
+          </ion-list-header>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item button href="/userhome">
+              <ion-icon slot="start" name='Home'></ion-icon>
+              <ion-label>
+                Home
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item button href="/usersearch">
+              <ion-icon slot="start" name='Search'></ion-icon>
+              <ion-label>
+                Search Video/Course
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/purchasedcourses">
+              <ion-icon slot="start" name='pricetags'></ion-icon>
+              <ion-label>
+                Purchased Courses
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/folders">
+              <ion-icon slot="start" name="folder-open-outline"></ion-icon>
+              <ion-label>
+                Folders
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/useremailcomposer">
+              <ion-icon slot="start" name='mail-outline'></ion-icon>
+              <ion-label>
+                Email Composer
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item>
+              <ion-button href="home"> Sign out </ion-button>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <ion-menu-toggle>
+              <ion-button>
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+              </ion-button>
+            </ion-menu-toggle>
+          </ion-buttons>
+          <div class="ion-text-center">
+            <ion-title slot="start" size="Medium"> Purchased Courses </ion-title>
+          </div>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="ion-text-center">
+          <h1 h1-align="center">My Purchased Courses</h1>
+        </div>
+            <!-- <ion-button (click)="getCourses()" expand="full" color="dark" >Play Video</ion-button> -->
+
+          <ion-list>
+              <ion-item *ngFor="let course of courseList">
+                <ion-label>{{course}}</ion-label>
+                <ion-button (click)="viewCourse(course)" expand="full" color="dark" >View</ion-button>
+              </ion-item>
+          </ion-list>
+      </ion-content>
+    </div>
+
+  </ion-split-pane>
+</ion-app>

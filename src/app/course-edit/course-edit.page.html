@@ -1,0 +1,146 @@
+<ion-app>
+  <ion-split-pane when="sm" contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title align-title="center">Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-list-header>
+            <b>Navigation</b>
+          </ion-list-header>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/instructorhome">
+              <ion-icon slot="start" name='Home'></ion-icon>
+              <ion-label>
+                Home
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- <ion-menu-toggle [autoHide]="false">
+            <ion-item button>
+              <ion-icon slot="start" name='person'></ion-icon>
+              <ion-label>
+                Profile
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/instructor-upload-video">
+              <ion-icon slot="start" name='cloud-upload-outline'></ion-icon>
+              <ion-label>
+                Upload Course
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/manage-courses">
+              <ion-icon slot="start" name='albums-outline'></ion-icon>
+              <ion-label>
+                Manage Courses
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/instructorcalendar">
+              <ion-icon slot="start" name='calendar'></ion-icon>
+              <ion-label>
+                Calendar
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/zoom-meeting">
+              <ion-icon slot="start" name='laptop-outline'></ion-icon>
+              <ion-label>
+                Create Zoom Meeting
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/emailcomposer">
+              <ion-icon slot="start" name='mail-outline'></ion-icon>
+              <ion-label>
+                Email Composer
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item>
+              <ion-button href="home"> Sign out </ion-button>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <!-- <ion-back-button defaultHref="home"></ion-back-button> -->
+            <ion-menu-toggle>
+              <ion-button>
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+              </ion-button>
+            </ion-menu-toggle>
+          </ion-buttons>
+          <div class="ion-text-center">
+            <ion-title slot="start" size="Medium"> Edit Course </ion-title>
+          </div>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+      <!-- <ion-list>
+          <ion-item-sliding *ngFor="let course of coursesList">
+            <ion-item (click)="editCourse(course)">
+              <ion-label>{{course}}</ion-label>
+            </ion-item>
+            <ion-item-options side="start">
+              <ion-item-option (click)="changeCourseName(video)" color="primary">Update Name</ion-item-option>
+            </ion-item-options>
+          <ion-item-options side="end">
+            <ion-item-option (click)="deleteCourse(video)" color="danger">Delete</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list> -->
+
+      <ion-list padding>
+        <ion-item-sliding *ngFor="let video of videos">
+          <ion-item>
+            <ion-label text-wrap (click)="editVideo(video)">
+              <h2>{{video.videoName}}</h2>
+                <h3>{{"$" + video.price}}</h3>
+              <p> {{video.summary}}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item-options side="start">
+            <ion-item-option (click)="editVideo(video)" color="primary">Edit</ion-item-option>
+          </ion-item-options>
+
+        <ion-item-options side="end">
+          <ion-item-option (click)="deleteVideo(video)" color="danger">Delete</ion-item-option>
+        </ion-item-options>
+
+        </ion-item-sliding>
+    </ion-list>
+
+  </ion-content>
+    </div>
+  </ion-split-pane>
+</ion-app>

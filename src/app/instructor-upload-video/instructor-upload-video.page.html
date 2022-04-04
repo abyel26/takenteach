@@ -1,0 +1,212 @@
+<!-- Author: Abyel Romero and Goma Niroula-->
+<ion-split-pane when="sm" contentId="main-content">
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title align-title="center">Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-list-header>
+          <b>Navigation</b>
+        </ion-list-header>
+
+        <!-- <ion-menu-toggle [autoHide]="false">
+          <ion-item button>
+            <ion-icon slot="start" name='person'></ion-icon>
+            <ion-label>
+              Profile
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle> -->
+
+        <ion-menu-toggle [autoHide]="false">
+          <ion-item href="/instructorhome">
+            <ion-icon slot="start" name='Home'></ion-icon>
+            <ion-label>
+              Home
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle [autoHide]="false">
+          <ion-item href="/instructor-upload-video">
+            <ion-icon slot="start" name='cloud-upload-outline'></ion-icon>
+            <ion-label>
+              Upload Course
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle [autoHide]="false">
+          <ion-item href="/manage-courses">
+            <ion-icon slot="start" name='albums-outline'></ion-icon>
+            <ion-label>
+              Manage Courses
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle [autoHide]="false">
+          <ion-item href="/instructorcalendar">
+            <ion-icon slot="start" name='calendar'></ion-icon>
+            <ion-label>
+              Calendar
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle [autoHide]="false">
+          <ion-item href="/zoom-meeting">
+            <ion-icon slot="start" name='laptop-outline'></ion-icon>
+            <ion-label>
+              Create Zoom Meeting
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle [autoHide]="false">
+          <ion-item href="/emailcomposer">
+            <ion-icon slot="start" name='mail-outline'></ion-icon>
+            <ion-label>
+              Email Composer
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle [autoHide]="false">
+          <ion-item>
+            <ion-button href="home"> Sign out </ion-button>
+          </ion-item>
+        </ion-menu-toggle>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <!-- <ion-back-button defaultHref="home"></ion-back-button> -->
+          <ion-menu-toggle>
+            <ion-button>
+              <ion-icon slot="icon-only" name="menu"></ion-icon>
+            </ion-button>
+          </ion-menu-toggle>
+        </ion-buttons>
+        <div class="ion-text-center">
+          <ion-title slot="start" size="Medium"> Create Course/Upload Video </ion-title>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <ion-grid>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-card>
+                <ion-card-header>
+                  <div class="ion-margin-vertical ion-text-center">
+                    <ion-card-title><h1>Create Course</h1></ion-card-title>
+                  </div>
+                </ion-card-header>
+
+                <ion-card-content>
+
+                  <div class="ion-margin-vertical ion-text-center">
+                    <ion-item>
+                      <ion-label position="floating">Course Name</ion-label>
+                      <ion-input [(ngModel)]="courseName" type="text" id="input"></ion-input>
+                    </ion-item>
+                    <!-- <ion-item>
+                      <ion-label position="floating">Price</ion-label>
+                      <ion-input [(ngModel)]="price" type="text" id="input"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Summary</ion-label>
+                      <ion-input [(ngModel)]="summary" type="text" id="input"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Tag</ion-label>
+                      <ion-input [(ngModel)]="tag" type="text" id="input"></ion-input>
+                    </ion-item>  -->
+                  </div>
+
+                  <div>
+                    <ion-button button ion-button full (click)="createCourse()">Create Course</ion-button>
+                  </div>
+
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card>
+              <ion-card-header>
+                <div class="ion-margin-vertical ion-text-center">
+                  <ion-card-title><h1>Upload Video</h1></ion-card-title>
+                </div>
+              </ion-card-header>
+
+              <ion-card-content>
+
+                <div class="ion-margin-vertical ion-text-center">
+                  <ion-item>
+                    <ion-label>Courses</ion-label>
+                    <ion-select lines="full" cancelText="Cancel" okText="Select" (ionChange)='getSelectValue($event)'>
+
+                      <ion-select-option value="{{index}}" *ngFor="let index of getCourses()"> {{index}} </ion-select-option>
+
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Video Name</ion-label>
+                    <ion-input [(ngModel)]="videoName" type="text" id="input"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Price</ion-label>
+                    <ion-input [(ngModel)]="price" type="number" id="input"></ion-input>
+
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="floating">Tag</ion-label>
+                    <ion-input [(ngModel)]="tag" type="text" id="input"></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="floating">Summary</ion-label>
+                    <ion-textarea [(ngModel)]="summary" type="text" id="input"></ion-textarea>
+                  </ion-item>
+
+                </div>
+
+                <div class="video-selection" *ngIf="!selectedVideo">
+                  <h2> <b> Browse Video </b></h2>
+                  <ion-button button ion-button full (click)="selectVideo()">Select Video</ion-button>
+                </div>
+
+
+                <div class="upload">
+                  <h2> <b> Upload! </b></h2>
+                  <ion-button button ion-button full (click)="uploadVideo()">
+                    <ion-icon name="cloud-upload-outline"></ion-icon>
+                  </ion-button>
+                </div>
+
+                <!-- <div class="button-options" >
+                  <button ion-button clear (click)="uploadVideo()">
+                    <ion-icon name="checkmark-circle" color="primary"></ion-icon>
+                  </button>
+                </div> -->
+
+              </ion-card-content>
+          </ion-card>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </div>
+</ion-split-pane>

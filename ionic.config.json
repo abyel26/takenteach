@@ -1,0 +1,7 @@
+{
+  "name": "TakeNTeach",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

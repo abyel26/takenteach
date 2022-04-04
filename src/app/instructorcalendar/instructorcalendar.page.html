@@ -1,0 +1,166 @@
+<!-- Author: Goma Niroula -->
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title align-title="center">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-list-header>
+        <b>Navigation</b>
+      </ion-list-header>
+
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item href="/instructorhome">
+          <ion-icon slot="start" name='Home'></ion-icon>
+          <ion-label>
+            Home
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item href="/instructor-upload-video">
+          <ion-icon slot="start" name='cloud-upload-outline'></ion-icon>
+          <ion-label>
+            Upload Course
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item href="/manage-courses">
+          <ion-icon slot="start" name='albums-outline'></ion-icon>
+          <ion-label>
+            Manage Courses
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item href="/instructorcalendar">
+          <ion-icon slot="start" name='calendar'></ion-icon>
+          <ion-label>
+            Calendar
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item href="/zoom-meeting">
+          <ion-icon slot="start" name='laptop-outline'></ion-icon>
+          <ion-label>
+            Create Zoom Meeting
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item href="/emailcomposer">
+          <ion-icon slot="start" name='mail-outline'></ion-icon>
+          <ion-label>
+            Email Composer
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item>
+          <ion-button href="home"> Sign out </ion-button>
+        </ion-item>
+      </ion-menu-toggle>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <!-- <ion-back-button defaultHref="instructorhome"></ion-back-button> -->
+        <ion-menu-toggle>
+          <ion-button>
+            <ion-icon slot="icon-only" name="menu"></ion-icon>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-buttons>
+      <div class="ion-text-center">
+        <ion-title slot="start" size="Medium"> Calendar </ion-title>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<!-- Add the UI for different view options -->
+<ion-content>
+  <ion-segment [(ngModel)]="calendar.mode">
+    <ion-segment-button value="month">
+      <ion-label>Month</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="week">
+      <ion-label>Week</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="day">
+      <ion-label>Day</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Add buttons for create and remove buttons -->
+  <ion-row>
+    <ion-col size="6">
+      <ion-button (click)="openCalModal()" expand="block" fill="outline">
+        Add Event
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="removeEvents()" expand="block" fill="outline">
+        Remove Event
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <!-- Move back one screen of the slides -->
+  <ion-row>
+    <ion-col size="2">
+      <ion-button fill="clear" (click)="back()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-col>
+
+    <ion-col size="8" class="ion-text-center">
+      <h2>{{ viewTitle }}</h2>
+    </ion-col>
+
+    <!-- Move forward one screen of the slides -->
+    <ion-col size="2">
+      <ion-button fill="clear" (click)="next()">
+        <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <!--Pull in the events and set event source, mode, date and hours-->
+  <calendar
+    [eventSource]="eventSource"
+    [calendarMode]="calendar.mode"
+    [currentDate]="calendar.currentDate"
+    (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)"
+    [monthviewDisplayEventTemplate]="template"
+    >
+  </calendar>
+
+<!-- Set event date view-->
+<ng-template #template let-view="view" let-row="row" let-col="col">
+  <div [class.with-event]="view.dates[row*7+col].events.length">
+    {{view.dates[row*7+col].label}}
+    <div class="indicator-container">
+      <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events"></div>
+    </div>
+  </div>
+</ng-template>
+
+</ion-content>

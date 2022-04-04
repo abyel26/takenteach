@@ -1,0 +1,80 @@
+<!-- Author: Abyel Romero and Goma Niroula -->
+<body>
+  <ion-app>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <div class="ion-text-center">
+          <ion-title slot="start" size="Medium"> Take N Teach </ion-title>
+       </div>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-card>
+                <ion-card-header>
+                  <div class="ion-margin-vertical ion-text-center">
+                    <ion-card-title><h1>Instructor Login</h1></ion-card-title>
+                  </div>
+                </ion-card-header>
+
+                <ion-card-content>
+                  <div class="ion-margin-vertical ion-text-center">
+                    <form #form="ngForm" (ngSubmit)="login(form)">
+                      <ion-item>
+                        <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                      </ion-item>
+
+                    <div padding>
+                        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+                        <br>
+                        <p class="paragraph"><b>Don't have an account?</b></p>
+                        <div class="hr"> </div>
+                        <ion-button routerLink="/instructor-sign-up"> Sign Up </ion-button>
+                    </div> <br>
+                    </form>
+                  </div>
+                </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ion-app>
+</body>
+
+  <!-- //Author: Abyel Romero -->
+
+  <!-- <ion-content color="primary" padding>
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+              <h3>Instructor Login</h3>
+            </div>
+            <div padding>
+              <ion-item>
+                <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+              </ion-item>
+            </div>
+            <div padding>
+              <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+            </div>
+            <ion-button href="/instructor-sign-up"> Sign Up </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content> -->

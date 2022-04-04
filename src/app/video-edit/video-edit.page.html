@@ -1,0 +1,158 @@
+ <!-- Author: Goma Niroula and Abyel Romero -->
+ <ion-app>
+  <ion-split-pane when="sm" contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title align-title="center">Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-list-header>
+            <b>Navigation</b>
+          </ion-list-header>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/instructorhome">
+              <ion-icon slot="start" name='Home'></ion-icon>
+              <ion-label>
+                Home
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- <ion-menu-toggle [autoHide]="false">
+            <ion-item button>
+              <ion-icon slot="start" name='person'></ion-icon>
+              <ion-label>
+                Profile
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/instructor-upload-video">
+              <ion-icon slot="start" name='cloud-upload-outline'></ion-icon>
+              <ion-label>
+                Upload Course
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/manage-courses">
+              <ion-icon slot="start" name='albums-outline'></ion-icon>
+              <ion-label>
+                Manage Courses
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/instructorcalendar">
+              <ion-icon slot="start" name='calendar'></ion-icon>
+              <ion-label>
+                Calendar
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/zoom-meeting">
+              <ion-icon slot="start" name='laptop-outline'></ion-icon>
+              <ion-label>
+                Create Zoom Meeting
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item href="/emailcomposer">
+              <ion-icon slot="start" name='mail-outline'></ion-icon>
+              <ion-label>
+                Email Composer
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item>
+              <ion-button href="home"> Sign out </ion-button>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-toggle>
+              <ion-button>
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+              </ion-button>
+            </ion-menu-toggle>
+          </ion-buttons>
+          <ion-title>Edit Video</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+
+        <ion-card-content>
+          <div class="ion-margin-vertical ion-text-center">
+            <form #form="ngForm" (ngSubmit)="updateVideo(form)">
+
+              <ion-item>
+                <ion-label text-wrap>Video Name </ion-label>
+                <ion-input name = "videoName" type="text" placeholder={{video.videoName}} ngModel required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label text-wrap>Price </ion-label>
+                <ion-input name = "price"  type="number" placeholder={{video.price}}  ngModel required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label text-wrap>Summary</ion-label>
+                <ion-textarea name = "summary"  type="text" autoGrow="true" placeholder={{video.summary}} ngModel required></ion-textarea>
+              </ion-item>
+
+            <div padding>
+              <ion-button type="submit" [disabled]="form.invalid" expand="block">Update</ion-button>
+            </div>
+            <ion-button (click)="deleteVideo()" color= "danger" expand="block">Delete</ion-button>
+          </form>
+          </div>
+        </ion-card-content>
+
+
+
+
+        <!-- <form #form="ngForm">
+
+            <ion-item>
+              <ion-label text-wrap>Video Name </ion-label>
+              <ion-input type="tel" placeholder={{video.videoName}}></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Price </ion-label>
+              <ion-input type="tel" placeholder={{video.price}}></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Summary</ion-label>
+              <ion-textarea type="text" autoGrow="true" placeholder={{video.summary}}></ion-textarea>
+            </ion-item>
+
+              <ion-button (click)="updateVideo(form)" expand="block">Update</ion-button>
+              <ion-button (click)="deleteVideo()" color= "danger" expand="block">Delete</ion-button>
+
+        </form> -->
+  </ion-content>
+    </div>
+  </ion-split-pane>
+</ion-app>
+
+
+

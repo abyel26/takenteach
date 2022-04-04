@@ -1,0 +1,52 @@
+<!-- Author: Goma Niroula -->
+<!-- cal-modal.page.html:  html for instructor calendar modal which adds the UI for close and
+                           save button, event tiltle and description -->
+<!-- Last updated: 11/20 -->
+
+<!--Add the save and close buttons-->
+<ion-toolbar color="primary">
+  <ion-title>{{ viewTitle }}</ion-title>
+</ion-toolbar>
+
+<!-- Add event title and description-->
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Title</ion-label>
+    <ion-input tpye="text" [(ngModel)]="event.title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Description</ion-label>
+    <ion-input tpye="text" [(ngModel)]="event.desc"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Zoom Link</ion-label>
+    <ion-input tpye="text" [(ngModel)]="event.zoomLink"></ion-input>
+  </ion-item>
+
+   <!--Pull in the events and set event source, mode, date and title-->
+  <calendar
+    *ngIf="modalReady"
+    [calendarMode]="calendar.mode"
+    [currentDate]="calendar.currentDate"
+    (onTitleChanged)="onViewTitleChanged($event)"
+    (onTimeSelected)="onTimeSelected($event)"
+  >
+  </calendar>
+
+  <br>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon> <b> Cancel </b>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="save()">
+        <ion-icon name="checkmark"></ion-icon> <b> Save </b>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-content>
