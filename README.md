@@ -19,12 +19,12 @@ Users have the ability to:
 We followed the Software Development Life Cycle (SDLC) structure in two semesters where we worked 1-1 with a client.
 
 The following were the 6 stages of SDLC:
-* Stage 1: Planning and Requirement Analysis. We started the project by first meeting with our client and started creating a requirements document. 
-* Stage 2: Defining requirements: We then moved onto creating a Software Requirement Specification document to be approved by our professor. 
-* Stage 3: Design: We researched different technologies and presented them to the client and defined the architechture of the project.
-* Stage 4: Development: We ended our first semester with a prototype. We continued working on the prototype the following semester until testing.
-* Stage 5: Testing: Our client gathered a list of testers along with some classmates. The prototype was deployed as an app and was tested using Apple's TestFlight. We continued working on the prototype taking feedback from the testers and fixing bugs.
-* Stage 6: Deploy: We finished the deployment stage at the end of the semester. 
+* **Stage 1: Planning and Requirement Analysis**. We started the project by first meeting with our client and started creating a requirements document. 
+* **Stage 2: Defining requirements**. We then moved onto creating a Software Requirement Specification document to be approved by our professor. 
+* **Stage 3: Design**. We researched different technologies and presented them to the client and defined the architechture of the project.
+* **Stage 4: Development**. We ended our first semester with a prototype. We continued working on the prototype the following semester until testing.
+* **Stage 5: Testing**. Our client gathered a list of testers along with some classmates. The prototype was deployed as an app and was tested using Apple's TestFlight. We continued working on the prototype taking feedback from the testers and fixing bugs.
+* **Stage 6: Deployment**. We finished the deployment stage at the end of the semester. 
 
 Tech Stack:
 * **Programming Language:** TypeScript
