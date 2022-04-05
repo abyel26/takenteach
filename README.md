@@ -26,6 +26,7 @@ The following were the 6 stages of SDLC:
 * Stage 5: Testing: Our client gathered a list of testers along with some classmates. The prototype was deployed as an app and was tested using Apple's TestFlight. We continued working on the prototype taking feedback from the testers and fixing bugs.
 * Stage 6: Deploy: We finished the deployment stage at the end of the semester. 
 
+Tech Stack:
 * **Programming Language:** TypeScript
 * **Frontend:** Ionic Framework, Angular, HTML, CSS
 * **Backend:** NodeJS, ExpressJS, MongoDB, Google Cloud
